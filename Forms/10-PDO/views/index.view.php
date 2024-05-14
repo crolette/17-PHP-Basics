@@ -9,7 +9,7 @@
 	foreach ($products as $product):
 	?>
 	<li>
-        <a href="product.php?code=<?= $product["productCode"]?>">
+        <a href="./product/product.php?code=<?= $product["productCode"]?>">
 		<?= $product["productName"]?>
         </a>
 	</li>

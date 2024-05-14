@@ -1,6 +1,6 @@
 <?php require "partials/header.php"; ?>
 <?php require "partials/banner.php";?>
-<?php require_once('controllers/getProduct.php')?>
+<?php require_once('../controllers/getProduct.php')?>
 
     <h2><?= $product["productName"] ?></h2>
 	
