@@ -40,7 +40,6 @@ var_dump($user);
                 <?php else: ?>
                     <li>Logged in as <?= htmlspecialchars($user['username']) ?></li>
                     <li><a href="/17-PHP-Basics/Forms/10-PDO/login/logout.php">Logout</a></li>
-                    <li><a href="addcomment.php">Add comment</a></li>
             <?php endif; ?>
       </ul>
     </nav>

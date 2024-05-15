@@ -1,14 +1,18 @@
 <?php 
     require_once('connexion.php');
+    // require_once('config.php');
+	global $db;
 
     if(empty($_GET["code"]) || !isset($_GET["code"])) {
+		global $db;
         echo "url incorrect";
         exit;
     }
 
 
     	try {
-		
+		//  $db = new PDO("mysql:host=".HOST.";dbname=".DB.";port=".PORT, LOGIN, PASSWORD);
+        //     $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         $statement = $db->prepare('SELECT * from products WHERE productCode = :codeProduct');
         $statement->bindParam(':codeProduct', $_GET['code'], PDO::PARAM_STR);
         $statement->execute();

@@ -1,9 +1,9 @@
 <?php 
 require 'connexion.php';
+global $db;
  
  $productCode = $product['productCode'];
     	try {
-		global $db;
 		$statement = $db->prepare("SELECT comment, username
                                     FROM comments
                                     JOIN users

@@ -1,5 +1,6 @@
 <?php 
     require_once('connexion.php');
+	global $db;
     	try {
 		
 		$statement = $db->prepare("SELECT * FROM products");

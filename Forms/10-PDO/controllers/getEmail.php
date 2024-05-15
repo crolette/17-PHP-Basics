@@ -1,9 +1,15 @@
 <?php 
-    require_once('connexion.php');
+    // require_once('connexion.php');
+// global $db;
+    require_once('config.php');
 
     function getEmail($email) {
+        echo $email;
+        global $db;
         try {
-            
+
+             $db = new PDO("mysql:host=".HOST.";dbname=".DB.";port=".PORT, LOGIN, PASSWORD);
+            $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             $statement = $db->prepare('SELECT email FROM users WHERE email = :email');
             $statement->bindParam(':email', $email, PDO::PARAM_STR);
             $statement->execute();
