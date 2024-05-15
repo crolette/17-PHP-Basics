@@ -1,25 +1,26 @@
 <?php 
-    require_once('config.php');
-        
-    if(empty($_GET["code"])) {
+    require_once('connexion.php');
+
+    if(empty($_GET["code"]) || !isset($_GET["code"])) {
         echo "url incorrect";
         exit;
     }
 
-    if(!isset($_GET["code"])) {
-        echo "url incorrect";
-        exit;
-    }
 
     	try {
-		$db = new PDO("mysql:host=".HOST.";dbname=".DB.";port=".PORT, LOGIN, PASSWORD);
-		$db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+		
         $statement = $db->prepare('SELECT * from products WHERE productCode = :codeProduct');
         $statement->bindParam(':codeProduct', $_GET['code'], PDO::PARAM_STR);
         $statement->execute();
 		// $statement = $db->prepare("SELECT * FROM products WHERE productCode = ?");
 		// $statement->execute([$_GET['code']]);
 		$product = $statement->fetch(PDO::FETCH_ASSOC);
+		if(!$product) {
+                echo "This product does not exist.";
+       			exit;
+            } else {
+                return true;
+            }
 	} catch (Exception $e) {
 		echo $e->getMessage();
 		throw $e;

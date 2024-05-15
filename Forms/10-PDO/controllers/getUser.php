@@ -1,11 +1,9 @@
 <?php 
-    require_once('config.php');
+    require_once('connexion.php');
 
     function getUser($username) {
         try {
-            $db = new PDO("mysql:host=".HOST.";dbname=".DB.";port=".PORT, LOGIN, PASSWORD);
             
-            $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             $statement = $db->prepare('SELECT username FROM users WHERE username = :username');
             $statement->bindParam(':username', $username, PDO::PARAM_STR);
             $statement->execute();
@@ -19,7 +17,7 @@
             }
 
         } catch (Exception $e) {
-                echo $e;
+                echo $e->getMessage();
                 throw $e;
                 return false;
         } finally {

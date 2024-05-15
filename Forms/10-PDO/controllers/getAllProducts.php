@@ -1,9 +1,7 @@
 <?php 
-    require_once('config.php');
-
+    require_once('connexion.php');
     	try {
-		$db = new PDO("mysql:host=".HOST.";dbname=".DB.";port=".PORT, LOGIN, PASSWORD);
-		$db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+		
 		$statement = $db->prepare("SELECT * FROM products");
 		$statement->execute();
 		$products = $statement->fetchAll(PDO::FETCH_ASSOC);
@@ -18,7 +16,5 @@
 	}
 
 
-	ini_set('display_errors', 1);
-	ini_set('display_startup_errors', '1');
-	error_reporting(E_ALL);
+	
 ?>

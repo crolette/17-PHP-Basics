@@ -1,7 +1,6 @@
 <?php 
-
         $arr_cookie_options = array (
-					'cookie_lifetime' => 60, 
+					'cookie_lifetime' => 3600, 
 					'cookie_path' => '/', 
 					'cookie_domain' => 'localhost', 
 					'cookie_secure' => false,    
@@ -17,7 +16,7 @@
         // print_r($_SESSION['user']);
         $user = $_SESSION['user'];
     } 
-
+var_dump($user);
 ?>
 
 <!DOCTYPE html>

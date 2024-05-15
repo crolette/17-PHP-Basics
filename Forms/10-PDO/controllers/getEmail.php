@@ -1,11 +1,9 @@
 <?php 
-    require_once('config.php');
+    require_once('connexion.php');
 
     function getEmail($email) {
         try {
-            $db = new PDO("mysql:host=".HOST.";dbname=".DB.";port=".PORT, LOGIN, PASSWORD);
             
-            $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             $statement = $db->prepare('SELECT email FROM users WHERE email = :email');
             $statement->bindParam(':email', $email, PDO::PARAM_STR);
             $statement->execute();
@@ -20,7 +18,7 @@
 
 
         } catch (Exception $e) {
-                echo $e;
+                echo $e->getMessage();
                 throw $e;
                 return false;
         } finally {
